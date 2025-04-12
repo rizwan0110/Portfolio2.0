@@ -28,15 +28,22 @@ body {
     0% {
         content: "Hello";
     }
-    33% {
+    20% {
         content: "Hi";
     }
-    66% {
+    40% {
         content: "Hej";
     }
-    100% {
-        content: "Hello";
+    60% {
+        content: "नमस्ते";
     }
+    80% {
+        content: "مرحبًا";
+    }
+    80% {
+        content: "നമസ്ക്കാരം";
+    }
+
 }
 
 .greeting {
@@ -47,7 +54,7 @@ body {
 
 .greeting::after {
     content: "Hello";
-    animation: greetingChange 6s infinite;
+    animation: greetingChange 8s infinite;
 }
 
 /* Navbar Styles */
