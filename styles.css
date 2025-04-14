@@ -282,29 +282,87 @@ h2 {
 }
 
 /* Projects */
-.projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+.projects-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.projects-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
     gap: 2rem;
-    margin-top: 2rem;
+    padding: 1rem;
 }
 
 .project-card {
+    flex: 0 0 calc(50% - 1rem);
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.project-card:nth-child(2) {
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: all 0.3s ease;
 }
 
-.project-card:nth-child(3) {
+.carousel-button:hover {
+    background: var(--caribbean-current);
+    color: var(--white);
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+
+.carousel-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Project 1 - Deep Learning Project */
+.project-1 {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-left: 4px solid #4a90e2;
+}
+
+/* Project 2 - AI Mental Health Project */
+.project-2 {
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    border-left: 4px solid #6c5ce7;
+}
+
+/* Project 3 - DMS Optimization Project */
+.project-3 {
     background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    border-left: 4px solid #e17055;
 }
 
 .project-card::before {
@@ -321,57 +379,20 @@ h2 {
     z-index: 0;
 }
 
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
 .project-card > * {
     position: relative;
     z-index: 1;
 }
 
-/* Summary Section */
-.project-summary {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 2px solid var(--platinum);
-}
-
-.project-summary h3 {
-    color: var(--indigo-dye);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-.summary-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.summary-item {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.summary-item:hover {
-    transform: translateY(-3px);
-}
-
-.summary-item h4 {
-    color: var(--indigo-dye);
-    margin-bottom: 0.8rem;
-    font-size: 1.2rem;
-}
-
-.summary-item p {
-    color: var(--jet);
-    line-height: 1.5;
-}
-
-/* Details Section */
 .project-details {
-    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-details h3 {
@@ -397,6 +418,8 @@ h2 {
 .detail-sections {
     display: grid;
     gap: 1.5rem;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .detail-section {
@@ -405,6 +428,12 @@ h2 {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+    overflow: visible;
+}
+
+.detail-section:hover {
+    transform: translateY(-2px);
 }
 
 .detail-section h4 {
@@ -431,7 +460,7 @@ h2 {
     left: 0;
 }
 
-.project-note {
+.confidentiality-note {
     margin-top: 1.5rem;
     padding: 1.5rem;
     background-color: rgba(255, 255, 255, 0.9);
@@ -495,6 +524,7 @@ footer {
     }
 
     .project-card {
+        flex: 0 0 100%;
         padding: 1.5rem;
     }
     
@@ -502,11 +532,28 @@ footer {
         font-size: 1.3rem;
     }
     
-    .summary-item {
-        padding: 1rem;
+    .carousel-button {
+        width: 32px;
+        height: 32px;
     }
     
-    .summary-items {
+    .carousel-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .projects-carousel {
         grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.3rem;
     }
 } 
