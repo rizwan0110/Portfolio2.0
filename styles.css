@@ -503,19 +503,53 @@ footer {
     text-align: center;
 }
 
-.social-links {
-    margin-top: 1rem;
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
-.social-links a {
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-icon {
     color: var(--white);
-    margin: 0 1rem;
+    font-size: 1.5rem;
+}
+
+.contact-item p {
+    color: var(--white);
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.social-links a:hover {
+.social-link:hover {
     color: var(--platinum);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: var(--white);
 }
 
 /* Responsive Design */
