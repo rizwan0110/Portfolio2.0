@@ -9,29 +9,47 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoSlideInterval;
     const slideInterval = 3000; // 3 seconds between slides
     
+    // Calculate how many cards to show based on screen width
+    function getVisibleCards() {
+        if (window.innerWidth >= 768) {
+            return 2; // Show 2 cards on medium and large screens
+        } else {
+            return 1; // Show 1 card on small screens
+        }
+    }
+    
     function calculateCardWidth() {
-        // Calculate the width of a card including its margin
-        const card = cards[0];
-        const style = window.getComputedStyle(card);
-        const margin = parseFloat(style.marginRight) + parseFloat(style.marginLeft);
-        cardWidth = card.offsetWidth + margin;
+        const visibleCards = getVisibleCards();
+        const trackWidth = track.offsetWidth;
+        const gap = 32; // 2rem gap between cards
+        cardWidth = (trackWidth - (gap * (visibleCards - 1))) / visibleCards;
+        
+        // Update card widths
+        cards.forEach(card => {
+            card.style.width = `${cardWidth}px`;
+        });
     }
     
     function updateCarousel() {
-        // Add smooth transition
         track.style.transition = 'transform 0.5s ease-in-out';
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        track.style.transform = `translateX(-${currentIndex * (cardWidth + 32)}px)`;
         
         // Update button states
+        const visibleCards = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visibleCards);
+        
         prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
         prevButton.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
         
-        nextButton.style.opacity = currentIndex >= cards.length - 2 ? '0.5' : '1';
-        nextButton.style.pointerEvents = currentIndex >= cards.length - 2 ? 'none' : 'auto';
+        nextButton.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        nextButton.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
     }
     
     function nextSlide() {
-        if (currentIndex < cards.length - 2) {
+        const visibleCards = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visibleCards);
+        
+        if (currentIndex < maxIndex) {
             currentIndex++;
         } else {
             currentIndex = 0; // Reset to first slide
@@ -43,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIndex > 0) {
             currentIndex--;
         } else {
-            currentIndex = cards.length - 2; // Go to last slide
+            const visibleCards = getVisibleCards();
+            currentIndex = Math.max(0, cards.length - visibleCards); // Go to last slide
         }
         updateCarousel();
     }
