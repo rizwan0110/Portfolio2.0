@@ -499,7 +499,7 @@ h2 {
 footer {
     background-color: var(--indigo-dye);
     color: var(--white);
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
@@ -507,19 +507,19 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .contact-icon {
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .contact-item p {
@@ -527,11 +527,20 @@ footer {
     margin: 0;
 }
 
+.contact-item a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--platinum);
+}
+
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .social-link {
@@ -548,7 +557,7 @@ footer {
 }
 
 .social-icon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--white);
 }
 
