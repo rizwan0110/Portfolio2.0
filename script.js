@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentIndex = 0;
     let cardWidth = 0;
+    let autoSlideInterval;
+    const slideInterval = 3000; // 3 seconds between slides
     
     function calculateCardWidth() {
         // Calculate the width of a card including its margin
@@ -28,19 +30,48 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.style.pointerEvents = currentIndex >= cards.length - 2 ? 'none' : 'auto';
     }
     
-    prevButton.addEventListener('click', () => {
+    function nextSlide() {
+        if (currentIndex < cards.length - 2) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Reset to first slide
+        }
+        updateCarousel();
+    }
+    
+    function prevSlide() {
         if (currentIndex > 0) {
             currentIndex--;
-            updateCarousel();
+        } else {
+            currentIndex = cards.length - 2; // Go to last slide
         }
+        updateCarousel();
+    }
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, slideInterval);
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Event listeners for manual navigation
+    prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
     });
     
     nextButton.addEventListener('click', () => {
-        if (currentIndex < cards.length - 2) {
-            currentIndex++;
-            updateCarousel();
-        }
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
     });
+    
+    // Pause auto-slide on hover
+    track.addEventListener('mouseenter', stopAutoSlide);
+    track.addEventListener('mouseleave', startAutoSlide);
     
     // Handle window resize
     window.addEventListener('resize', () => {
@@ -51,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize carousel
     calculateCardWidth();
     updateCarousel();
+    startAutoSlide();
     
     // Add touch support
     let touchStartX = 0;
@@ -58,22 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     track.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        stopAutoSlide();
     });
     
     track.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
+        startAutoSlide();
     });
     
     function handleSwipe() {
         const swipeDistance = touchEndX - touchStartX;
         if (Math.abs(swipeDistance) > 50) { // Minimum swipe distance
-            if (swipeDistance > 0 && currentIndex > 0) {
-                currentIndex--;
-            } else if (swipeDistance < 0 && currentIndex < cards.length - 2) {
-                currentIndex++;
+            if (swipeDistance > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
             }
-            updateCarousel();
         }
     }
 }); 
