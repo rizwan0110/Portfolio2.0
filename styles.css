@@ -611,4 +611,70 @@ footer {
     .project-card h3 {
         font-size: 1.3rem;
     }
+}
+
+.volunteering {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.volunteering h3 {
+    color: var(--indigo-dye);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--caribbean-current);
+    padding-bottom: 0.5rem;
+}
+
+.volunteering-event {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--platinum);
+}
+
+.volunteering-event:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.volunteering-event h4 {
+    color: var(--caribbean-current);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.volunteering-event .event-date {
+    color: var(--indigo-dye);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.volunteering-event .event-description {
+    line-height: 1.6;
+    text-align: justify;
+    color: var(--jet);
+}
+
+.hobbies {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hobbies h3 {
+    color: var(--indigo-dye);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--caribbean-current);
+    padding-bottom: 0.5rem;
+}
+
+.hobbies p {
+    line-height: 1.6;
+    text-align: justify;
 } 
