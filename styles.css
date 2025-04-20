@@ -363,22 +363,22 @@ h2 {
     height: 24px;
 }
 
-/* Project 1 - Deep Learning Project */
+/* Project 1  */
 .project-1 {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-/* Project 2 - AI Mental Health Project */
+/* Project 2  */
 .project-2 {
     background: linear-gradient(135deg, #e8f0fe 0%, #d0e0fc 100%);
 }
 
-/* Project 3 - DMS Optimization Project */
+/* Project 3 */
 .project-3 {
     background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
 }
 
-/* Project 4 - Add your project name */
+/* Project 4  */
 .project-4 {
     background: linear-gradient(135deg, #e0f0ff 0%, #b3d1ff 100%);
 }
@@ -390,7 +390,6 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('src/images/backgrounds/tech-pattern.png');
     background-size: cover;
     background-position: center;
     opacity: 0.05;
