@@ -311,8 +311,8 @@ h2 {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     animation: float 6s ease-in-out infinite;
+    border-left: 4px solid var(--caribbean-current);
 }
 
 @keyframes float {
@@ -366,19 +366,21 @@ h2 {
 /* Project 1 - Deep Learning Project */
 .project-1 {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    border-left: 4px solid #4a90e2;
 }
 
 /* Project 2 - AI Mental Health Project */
 .project-2 {
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-    border-left: 4px solid #6c5ce7;
+    background: linear-gradient(135deg, #e8f0fe 0%, #d0e0fc 100%);
 }
 
 /* Project 3 - DMS Optimization Project */
 .project-3 {
-    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-    border-left: 4px solid #e17055;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
+}
+
+/* Project 4 - Add your project name */
+.project-4 {
+    background: linear-gradient(135deg, #e0f0ff 0%, #b3d1ff 100%);
 }
 
 .project-card::before {
@@ -391,7 +393,7 @@ h2 {
     background-image: url('src/images/backgrounds/tech-pattern.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.1;
+    opacity: 0.05;
     z-index: 0;
 }
 
@@ -416,6 +418,7 @@ h2 {
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-align: justify;
 }
 
 .project-duration {
@@ -423,12 +426,14 @@ h2 {
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-align: justify;
 }
 
 .project-description {
     margin-bottom: 1.5rem;
     line-height: 1.6;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    text-align: justify;
 }
 
 .detail-sections {
@@ -456,6 +461,7 @@ h2 {
     color: var(--indigo-dye);
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
+    text-align: justify;
 }
 
 .detail-section ul {
@@ -467,13 +473,7 @@ h2 {
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 1.2rem;
-}
-
-.detail-section ul li::before {
-    content: "•";
-    color: var(--caribbean-current);
-    position: absolute;
-    left: 0;
+    text-align: justify;
 }
 
 .confidentiality-note {
@@ -485,6 +485,7 @@ h2 {
     font-size: 0.9rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     backdrop-filter: blur(5px);
+    text-align: justify;
 }
 
 /* Certificates */
